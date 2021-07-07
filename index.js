@@ -5,7 +5,7 @@ const app = express();
 
 // Get request on the home page 
 app.get("/", (req, res) => {
-    res.send({ test: "line!" });
+    res.send({ test: "live updating" });
 });
 
 // Pass the port the app identifies as the active one
