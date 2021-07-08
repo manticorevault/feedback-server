@@ -1,12 +1,12 @@
 const express = require("express");
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 // Bring in the express app
 const app = express();
 
-// Get request on the home page 
-app.get("/", (req, res) => {
-    res.send({ test: "live updating" });
-});
+// Configure the passport to use the Google Strategy;
+passport.use(new GoogleStrategy());
 
 // Pass the port the app identifies as the active one
 const PORT = process.env.PORT || 3333;
