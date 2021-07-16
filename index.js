@@ -22,6 +22,9 @@ app.get("/auth/google", passport.authenticate("google", {
     scope: ["profile", "email"]
 }));
 
+// Handle Google authentication callback.
+app.get("/auth/google/callback", passport.authenticate("google"));
+
 // Pass the port the app identifies as the active one
 const PORT = process.env.PORT || 5000;
 
