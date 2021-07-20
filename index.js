@@ -1,5 +1,14 @@
 require("./services/passport");
 const express = require("express");
+const mongoose = require("mongoose");
+const keys = require("./config/keys");
+
+// Connect to MongoDB Atlas
+mongoose.connect(keys.mongoURI, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  });
 
 // Bring in the express app
 const app = express();
