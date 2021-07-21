@@ -1,8 +1,9 @@
-require("./services/passport");
 const express = require("express");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
+
 require("./models/User");
+require("./services/passport");
 
 // Connect to MongoDB Atlas
 mongoose.connect(keys.mongoURI, {
