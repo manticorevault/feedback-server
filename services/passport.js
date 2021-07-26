@@ -5,6 +5,18 @@ const keys = require("../config/keys");
 
 const User = mongoose.model("users");
 
+// Serialize and deserialize users
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser((user, done) => {
+    User.findById(id)
+        .then(user => {
+            done(null, user);
+        }); 
+});
+
 // Configure the passport to use the Google Strategy with the imported keys
 passport.use(
     new GoogleStrategy({ 
@@ -17,10 +29,13 @@ passport.use(
         User.findOne({ googleID: profile.id })
             .then((existingUser) => {
                 if (existingUser) {
-
+                    done(null, existingUser);
                 } else {
-                    new User({ googleID: profile.id }).save();
+                    new User({ googleID: profile.id })
+                        .save()
+                        .then(user => done(null, user));
+
                 }
             });
-    })
+        })   
 );
