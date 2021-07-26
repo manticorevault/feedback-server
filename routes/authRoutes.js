@@ -8,4 +8,10 @@ module.exports = app => {
 
     // Handle Google authentication callback.
     app.get("/auth/google/callback", passport.authenticate("google"));
+
+    // Retrieves the current user.
+    app.get("/api/user", (req, res) => {
+        res.send(req.user);
+    })
 };
+

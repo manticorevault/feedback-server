@@ -14,8 +14,6 @@ mongoose.connect(keys.mongoURI, {
     useUnifiedTopology: true,
   });
 
-
-
 // Bring in the express app
 const app = express();
 
